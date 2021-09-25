@@ -1,15 +1,57 @@
 {
-  "name": "covid-dashboard",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "gatsby": "^4.0.0-zz-next.1"
-  }
+	"name": "covid-dashboard",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "gatsby develop",
+		"build": "gatsby build",
+		"clean": "gatsby clean",
+		"gen": "graphql-codegen --config codegen.yml",
+		"gen:watch": "graphql-codegen --config codegen.yml -w",
+		"lint": "eslint '*/**/*.{js,ts,tsx}' --quiet",
+		"serve": "gatsby serve",
+		"prepare": "husky install"
+	},
+	"lint-staged": {
+		"src/**/*.{js,ts,tsx}": [
+			"eslint --fix"
+		],
+		"*.+(js|jsx|json|yml|yaml|css|less|css|scss |ts|tsx| md|graphql|mdx)": [
+			"prettier --write"
+		]
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"dotenv": "^10.0.0",
+		"gatsby": "^4.0.0-zz-next.1",
+		"gatsby-plugin-eslint": "^4.0.0",
+		"gatsby-plugin-typescript": "^4.0.0-zz-next.1",
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2"
+	},
+	"devDependencies": {
+		"@graphql-codegen/cli": "^2.2.0",
+		"@graphql-codegen/typescript": "^2.2.2",
+		"@graphql-codegen/typescript-operations": "^2.1.4",
+		"@types/react": "^17.0.24",
+		"@types/react-dom": "^17.0.9",
+		"@typescript-eslint/eslint-plugin": "^4.31.2",
+		"@typescript-eslint/parser": "^4.31.2",
+		"eslint": "^7.32.0",
+		"eslint-config-airbnb": "^18.2.1",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-import": "^2.24.2",
+		"eslint-plugin-jsx-a11y": "^6.4.1",
+		"eslint-plugin-no-loops": "^0.3.0",
+		"eslint-plugin-prettier": "^4.0.0",
+		"eslint-plugin-react": "^7.26.0",
+		"eslint-plugin-react-hooks": "^4.2.0",
+		"husky": "^7.0.0",
+		"lint-staged": "^11.1.2",
+		"prettier": "^2.4.1",
+		"typescript": "^4.4.3"
+	}
 }
