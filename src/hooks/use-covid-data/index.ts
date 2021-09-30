@@ -13,8 +13,6 @@ export const useCovidData = () => {
 		fetcher,
 	)
 
-	console.log(global)
-
 	const { data: countryData } = useSWR<{ [key: string]: number }>(
 		`https://disease.sh/v3/covid-19/countries`,
 	)
