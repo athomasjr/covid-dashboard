@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = {
 	plugins: [
-		`gatsby-source-covid-data-plugin`,
+		'gatsby-plugin-react-leaflet',
 		{
 			resolve: `gatsby-plugin-typescript`,
 			options: {
@@ -22,6 +22,7 @@ module.exports = {
 				hooks: path.join(__dirname, './src/hooks'),
 				styles: path.join(__dirname, './src/styles'),
 				sections: path.join(__dirname, './src/sections'),
+				lib: path.join(__dirname, './src/lib'),
 			},
 		},
 	],

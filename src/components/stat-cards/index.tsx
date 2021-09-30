@@ -1,10 +1,9 @@
-import { StatCard } from 'components'
 import React from 'react'
-import { Maybe } from 'types'
+import { GlobalData } from '../../hooks/use-covid-data/index'
 import * as S from './styles'
 
 interface IStatCardProps {
-	covidData: { [k: string]: Maybe<number> | 'CovidData' }
+	covidData: GlobalData
 	isDark?: boolean
 }
 
@@ -14,14 +13,7 @@ export default function StatCards({
 }: IStatCardProps) {
 	return (
 		<S.StatCards isDark={isDark}>
-			{Object.keys(covidData).map(key => (
-				<StatCard
-					isDark={isDark}
-					key={key}
-					title={key}
-					stat={covidData[key]!.toLocaleString()}
-				/>
-			))}
+			{Object.keys(covidData).map(([key, value]) => console.log(key, value))}
 		</S.StatCards>
 	)
 }

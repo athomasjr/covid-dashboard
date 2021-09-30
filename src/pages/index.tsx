@@ -1,42 +1,19 @@
-import { StatCards } from 'components'
-import { graphql } from 'gatsby'
+import { Map, StatCards } from 'components'
+import { useCovidData } from 'hooks'
 import React from 'react'
-import { CovidDataQuery } from 'types'
 
-interface IIndexPageProps {
-	data: CovidDataQuery
-}
+export default function IndexPage() {
+	const { globalData } = useCovidData()
 
-export default function IndexPage({ data }: IIndexPageProps) {
-	const headerStats = Object.fromEntries(
-		Object.entries(data.covidData!).filter(
-			([key]) => key === 'deaths' || key === 'cases' || key === 'recovered',
-		),
-	)
-
-	const sectionStats = Object.fromEntries(
-		Object.entries(data.covidData!).filter(
-			([key]) => key === 'active' || key === 'tests' || key === 'critical',
-		),
+	const headerCardsData = Object.keys(globalData).filter(
+		key => key === 'deaths' || key === 'recovered' || key === 'cases',
 	)
 
 	return (
 		<>
-			<StatCards covidData={headerStats} />
-			<StatCards isDark covidData={sectionStats} />
+			<StatCards covidData={headerCardsData} />
+			{/* <StatCards isDark covidData={sectionStats} /> */}
+			<Map />
 		</>
 	)
 }
-
-export const query = graphql`
-	query CovidData {
-		covidData {
-			deaths
-			cases
-			recovered
-			active
-			tests
-			critical
-		}
-	}
-`

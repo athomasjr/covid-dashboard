@@ -6,9 +6,12 @@ interface IStatCardProps {
 }
 
 export const StatCard = styled.div<IStatCardProps>`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 	border-radius: 4px;
 	margin: 0 auto;
-	text-align: center;
 	background: ${props =>
 		props.isDark
 			? props.theme.colors.background.dark
